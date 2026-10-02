@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>Пользователи</title>
 </head>
 <body>
-    <ul>
+    <ul class="user-list">
         @foreach($users as $user)
             <li>{{$user->name . " " . $user->email}}</li>
         @endforeach
