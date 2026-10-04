@@ -1,0 +1,28 @@
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    row-gap: 9px;
+    column-gap: 12px;
+    @media (min-width: $menu-full-screen) {
+        flex: 4;
+    }
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    
+
+    h1{
+        font-size: 18px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}
+
+.card:hover{
+    border: 1px solid #3EB489;
+    border-radius: 5px;
+}
+
+

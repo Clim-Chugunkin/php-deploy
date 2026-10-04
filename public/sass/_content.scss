@@ -1,0 +1,56 @@
+.img-watch{
+    width: 90vw;
+    margin-top: -3vh;
+    @media (min-width: $desctop-screen){
+      width: 30%;
+      margin-top: 0;
+      object-fit: contain;
+      flex: 2;
+    }
+}
+
+.container{
+    display: flex;       
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.back-caption {
+    font-size: 12vw;         /* Размер зависит от ширины экрана (очень большой) */
+    font-weight: 900;
+    color: #EBEBEB; /* Делаем текст бледным/полупрозрачным */
+    white-space: nowrap;     /* Запрещаем перенос строки */
+    pointer-events: none;    /* Чтобы текст не мешал кликать по картинке */
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    line-height: 0.8em;
+  }
+
+  .cover{
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $desctop-screen) {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  .main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 16px 0;
+    @media(min-width: $desctop-screen){
+      max-width: 1200px;
+      margin: 0 auto;
+    } 
+  }
+
+  .catalog-content{
+    @media(min-width: $menu-full-screen){
+      display: flex;
+    }
+  }
+

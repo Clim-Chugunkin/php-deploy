@@ -18,4 +18,8 @@ class MyController extends Controller
         $users=$query->get();
         return view('users',compact('users'));
     }
+
+    public function home(){
+        return view('home');
+    }
 }
