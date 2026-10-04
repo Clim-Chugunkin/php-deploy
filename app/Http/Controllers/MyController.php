@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Watch;
+
 
 class MyController extends Controller
 {
@@ -20,6 +22,7 @@ class MyController extends Controller
     }
 
     public function home(){
-        return view('home');
+        $watches = Watch::all();
+        return view('home',compact('watches'));
     }
 }

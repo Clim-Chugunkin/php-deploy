@@ -42,7 +42,7 @@
         <div class="container">
             <h1 class="back-caption">Амфибия 2403</h1>
             <div class="cover">
-            <img src="images/watch_m2.png" class="img-watch">
+            <img src="{{Storage::url('watches/watch5.png')}}" class="img-watch">
             <div class="info">
                 <h1>Часы  восток <br> амфибия 2403</h1>
                 <span></span>
@@ -109,42 +109,17 @@
             </ul>
         </div>
         <div class="cards">
-            <div class="card">
-                <img src="images/watch1.png">
-                <h1>Восток Амфибия 2403</h1>
-                <div class="price">
-                    <p>9 800</p>
-                    <p>Р</p>
+            @foreach($watches as $watch)
+                <div class="card">
+                <img src="{{$watch->image_url}}">
+                    <h1>{{$watch->model}}</h1>
+                    <div class="price">
+                        <p>{{$watch->price}}</p>
+                        <p>Р</p>
+                    </div>
+                    <button class="garbidge">В корзину</button>
                 </div>
-                <button class="garbidge">В корзину</button>
-            </div>
-            <div class="card">
-                <img src="images/watch2.png">
-                <h1>Восток Амфибия 2403</h1>
-                <div class="price">
-                    <p>9 800</p>
-                    <p>Р</p>
-                </div>
-                <button class="garbidge">В корзину</button>
-            </div>
-            <div class="card">
-                <img src="images/watch3.png">
-                <h1>Восток Амфибия 2404</h1>
-                <div class="price">
-                    <p>9 800</p>
-                    <p>Р</p>
-                </div>
-                <button class="garbidge">В корзину</button>
-            </div>
-            <div class="card">
-                <img src="images/watch5.png">
-                <h1>Восток Амфибия 2403</h1>
-                <div class="price">
-                    <p>9 800</p>
-                    <p>Р</p>
-                </div>
-                <button class="garbidge">В корзину</button>
-            </div>
+            @endforeach
         </div>
         </div>
     </div>
