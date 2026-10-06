@@ -21,15 +21,30 @@
                     </ul>
                 </div>
                 <div class="header-login">
+                    @guest
+                    <a href="{{route('login')}}" class="login">
                     <div class="login bag">
                         <img src="{{ asset('images/login.png') }}" width="24px">
-                        <p>Вход</p>
+                        <p>Вход</p> 
                     </div>
+                    </a>
+                    @endguest
+                    @auth
+                        <p class="user-name">Привет,{{ auth()->user()->name }}!</p>
+                       
 
+                    @endauth  
                     <div class="bag">
                         <img src="{{ asset('images/bag.jpeg') }}" width="24px">
                         <p>12 530</p>
                     </div>
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">Выйти</button>
+                        </form>
+                    @endauth
+
                 </div>
 
 
