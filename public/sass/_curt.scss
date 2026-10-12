@@ -1,0 +1,109 @@
+
+.curt-body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.curt-container{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.curt-header{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+
+.curt-header h1{
+    padding: 10px;
+    font-size: 45px;
+}
+.curt-header p{
+    padding: 15px 0;
+    font-size: 20px;
+}
+.curt-card{
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+   
+}
+.item-price{
+    margin-left: auto;
+}
+.delete-form button{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: white;
+    border: none;
+    font-size: 20px;
+}
+
+.curt-total{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-radius: 20px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Мягкая тень */ 
+}
+.curt-items-container{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.curt-img {
+    display: block;
+    height: 100%;             /* Занимает ровно 80px высоты карточки */
+    width: 150px;              /* Делаем квадратную область для картинок */
+    object-fit: contain;      /* Картинка аккуратно вписывается без искажений */
+    margin-right: 20px;       /* Отступ справа от картинки */
+}
+.btn-pay{
+    display: block;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    background-color: #f4f4f4;
+}
+
+.flex-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.temp p{
+    margin-top: 1100px;
+}
+
+@media (max-width: 750px){
+    .curt-container{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .curt-total{
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        position: sticky;
+    }
+
+}
+

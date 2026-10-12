@@ -35,13 +35,13 @@
 
                     @endauth  
                     <div class="bag">
-                        <img src="{{ asset('images/bag.jpeg') }}" width="24px">
-                        <p>12 530</p>
+                        <a href="{{route('curt')}}"><img src="{{ asset('images/bag.jpeg') }}" width="24px"></a>
+                        <p id="cart-counter">0</p>
                     </div>
                     @auth
                     <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit">Выйти</button>
+                            <button type="submit" class="btn-logout">Выйти</button>
                         </form>
                     @endauth
 
@@ -125,15 +125,16 @@
         </div>
         <div class="cards">
             @foreach($watches as $watch)
-                <div class="card">
-                <img src="{{$watch->image_url}}">
-                    <h1>{{$watch->model}}</h1>
-                    <div class="price">
-                        <p>{{$watch->price}}</p>
-                        <p>Р</p>
+                    <div class="card" data-id="{{$watch->id}}" data-url="/watches/{{$watch->id}}">
+                        <img src="{{$watch->image_url}}">
+                        <h1>{{$watch->model}}</h1>
+                        <div class="price">
+                            <p>{{$watch->price}}</p>
+                            <p>Р</p>
+                        </div>
+                        <button class="garbidge">В корзину</button>
                     </div>
-                    <button class="garbidge">В корзину</button>
-                </div>
+                
             @endforeach
         </div>
         </div>
@@ -148,5 +149,60 @@
                 menu.classList.toggle('is-open');
             });
         })();
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('page showed');
+            fetch("{{route('api.cart.count')}}", {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const counter = document.getElementById('cart-counter');
+            if (counter) {
+                counter.textContent = data.positions;
+            }
+        })
+        .catch(error => console.error('Ошибка загрузки корзины:', error));
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (e) => {
+        
+            // Проверяем: если клик пришелся на кнопку с классом .garbidge
+            if (e.target.classList.contains('garbidge')) {
+                const productId = card.dataset.id;
+                console.log('Кликнули на кнопку! ID:', productId);
+                // Передаем для записи в корзину
+                fetch("{{ route('api.cart.add') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json', // Ошибка 1: пропущена запятая
+                        'Content-Type': 'application/json', // Важно: сообщаем, что отправляем JSON
+                    },
+                    body: JSON.stringify({ 
+                        product_id: productId
+                    }),
+                    credentials: 'include' 
+                })
+                .then(response => response.json()) 
+                .then(data => {
+                    const counter = document.getElementById('cart-counter');
+                    if (counter) {
+                        counter.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Ошибка:', error)); 
+            }else{
+            // Если кликнули в любое другое место карточки — переходим
+            window.location.href = card.dataset.url;
+
+            }
+            
+    });
+});
 </script>
 </html>
