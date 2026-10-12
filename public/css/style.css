@@ -180,8 +180,18 @@ header {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    align-items: center;
   }
 }
+.btn-logout {
+  background: none;
+  font-size: 1.1em;
+  background-color: #aaaaaa;
+  border-radius: 6px;
+  padding: 5px 10px;
+  border: none;
+}
+
 .img-watch {
   width: 90vw;
   margin-top: -3vh;
@@ -454,6 +464,222 @@ header {
 .card:hover {
   border: 1px solid #3EB489;
   border-radius: 5px;
+}
+
+.card-watch-body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-watch-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.product-image {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 28px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 20px 0;
+}
+
+.btn-buy {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-buy:hover {
+  background-color: #0056b3;
+}
+
+.specs-section {
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.specs-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.specs-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.specs-table td:first-child {
+  font-weight: bold;
+  color: #666;
+  width: 30%;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.curt-body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.curt-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.curt-header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+
+.curt-header h1 {
+  padding: 10px;
+  font-size: 45px;
+}
+
+.curt-header p {
+  padding: 15px 0;
+  font-size: 20px;
+}
+
+.curt-card {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+}
+
+.item-price {
+  margin-left: auto;
+}
+
+.delete-form button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: white;
+  border: none;
+  font-size: 20px;
+}
+
+.curt-total {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+}
+
+.curt-items-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.curt-img {
+  display: block;
+  height: 100%; /* Занимает ровно 80px высоты карточки */
+  width: 150px; /* Делаем квадратную область для картинок */
+  object-fit: contain; /* Картинка аккуратно вписывается без искажений */
+  margin-right: 20px; /* Отступ справа от картинки */
+}
+
+.btn-pay {
+  display: block;
+  margin-bottom: 10px;
+  padding: 20px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: #f4f4f4;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp p {
+  margin-top: 1100px;
+}
+
+@media (max-width: 750px) {
+  .curt-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .curt-total {
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    position: sticky;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
