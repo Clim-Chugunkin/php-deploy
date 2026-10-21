@@ -681,5 +681,400 @@ h1 {
     position: sticky;
   }
 }
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* ==========================================================================
+   2. КОНТЕЙНЕР ФОРМЫ
+   ========================================================================== */
+.catalog-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+  /* ⬇️ МАГИЯ ЦЕНТРОВКИ БЕЗ BODY ⬇️ */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Группы полей формы */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ==========================================================================
+   3. СТИЛИЗАЦИЯ ИНПУТОВ (ТЕКСТ, ЧИСЛА)
+   ========================================================================== */
+input[type=text],
+input[type=number] {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 15px;
+  color: #1a202c;
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+/* Эффект фокуса для текстовых полей */
+input[type=text]:focus,
+input[type=number]:focus {
+  border-color: #1a202c;
+  box-shadow: 0 0 0 3px rgba(26, 32, 44, 0.1);
+}
+
+/* ==========================================================================
+   4. КАСТОМИЗАЦИЯ КНОПКИ ЗАГРУЗКИ КАРТИНКИ
+   ========================================================================== */
+/* Наша новая красивая рамка-обертка для выбора файла */
+.file-upload-label {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Текст внутри рамки */
+.upload-btn-text {
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* Эффект при наведении на область загрузки */
+.file-upload-label:hover {
+  background-color: #f8fafc;
+  border-color: #1a202c;
+}
+
+/* Полностью скрываем стандартный уродливый инпут браузера со словом "Обзор" */
+.file-input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Контейнер и сам элемент живого превью картинки */
+.mt-2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#image-preview {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  padding: 6px;
+  border-radius: 8px;
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   5. БЛОК ХАРАКТЕРИСТИК (SPECS)
+   ========================================================================== */
+.specs-container {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 25px;
+}
+
+/* Контейнер, где лежат строки */
+.specs {
+  margin-bottom: 10px;
+}
+
+/* Строка с двумя инпутами (Характеристика и Значение) */
+.spec {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.spec input {
+  flex: 1; /* Инпуты делят ширину строки строго пополам */
+}
+
+/* Маленькая кнопка "+" для добавления новой строки */
+#btn-add {
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #cbd5e1;
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+#btn-add:hover {
+  background-color: #e2e8f0;
+  color: #1a202c;
+}
+
+/* Кнопка удаления строки "Х", если вы решите её добавить в JS */
+.btn-remove {
+  background-color: #fff5f5;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+  padding: 11px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.15s ease;
+}
+
+.btn-remove:hover {
+  background-color: #e53e3e;
+  color: #fff;
+  border-color: #e53e3e;
+}
+
+/* ==========================================================================
+   6. ГЛАВНАЯ КНОПКА ОТПРАВКИ ФОРМЫ
+   ========================================================================== */
+button[type=submit] {
+  width: 100%;
+  padding: 14px;
+  background-color: #1a202c; /* Элегантный глубокий графитовый цвет */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type=submit]:hover {
+  background-color: #2d3748;
+}
+
+button[type=submit]:active {
+  background-color: #11151c;
+}
+
+/* ==========================================================================
+   ТАБЛИЦА КАТАЛОГА ТОВАРОВ (АДМИН-ПАНЕЛЬ)
+   ========================================================================== */
+/* 1. Главный контейнер таблицы */
+.admin-container {
+  display: grid;
+  /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
+  grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Заголовки таблицы (Шапка) */
+.table-header {
+  background-color: #f4f4f5;
+  color: #71717a;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 16px 10px;
+  border-bottom: 2px solid #e4e4e7;
+  /* Центрирование текста во всех заголовках */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Опционально: если хотите заголовок "Модель" оставить слева, раскомментируйте строку ниже: */
+/* .table-header:nth-child(2) { justify-content: flex-start; text-align: left; } */
+/* 3. Карточка (строка) товара */
+.admin-card {
+  grid-column: span 5; /* Растягиваем строку на все 5 колонок основного грида */
+  display: grid;
+  /* Повторяем структуру колонок родителя для идеального выравнивания */
+  grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+  align-items: center; /* Центрирование контента ячеек по вертикали */
+  padding: 12px 10px;
+  border-bottom: 1px solid #e4e4e7;
+  transition: background-color 0.2s ease;
+  text-decoration: none; /* Если карточка обернута в ссылку */
+  color: inherit;
+}
+
+/* Последнюю строку избавляем от нижней рамки */
+.admin-card:last-child {
+  border-bottom: none;
+}
+
+/* Эффект при наведении на строку */
+.admin-card:hover {
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ ЭЛЕМЕНТОВ ВНУТРИ СТРОКИ (ЯЧЕЙКИ)
+   ========================================================================== */
+/* Колонка 1: Картинка */
+.admin-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover; /* Защита от искажения пропорций фото */
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  justify-self: center; /* Центрируем саму картинку в своей колонке */
+}
+
+/* Колонка 2: Название модели */
+.admin-card h1 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #18181b;
+  margin: 0;
+  padding: 0 10px;
+  text-align: center; /* Текст названия оставляем слева для удобства чтения */
+  /* Защита от слишком длинных названий (обрезает в красивое троеточие) */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Колонка 3: Цена */
+.admin-price {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center; /* Центрируем цену под заголовком */
+  margin: 0;
+  font-weight: 700;
+  color: #09090b;
+}
+
+.admin-price p {
+  margin: 0;
+}
+
+/* Колонка 4: Остаток на складе */
+.admin-card > p {
+  margin: 0;
+  color: #4b5563;
+  font-weight: 500;
+  text-align: center; /* Центрируем число под заголовком */
+}
+
+/* Колонка 5: Форма и кнопка удаления */
+.admin-card form {
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Центрируем кнопку удаления */
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 1px 2px rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-danger:active {
+  transform: scale(0.97); /* Легкий эффект нажатия */
+}
+
+.admin-menu {
+  display: flex;
+  margin-left: auto;
+  list-style: none;
+  gap: 25px;
+}
+
+.admin-menu a {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Размер и начертание текста */
+  font-size: 15px;
+  font-weight: 500; /* Умеренно жирный (Medium) */
+  line-height: 1.2; /* Высота строки */
+  letter-spacing: 0.3px; /* Межсимвольный интервал */
+  /* Декорирование и цвет */
+  color: #4b5563; /* Благородный темно-серый цвет */
+  text-decoration: none; /* Отключение стандартного подчеркивания */
+  /* Сглаживание шрифтов на экранах с высоким разрешением */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.admin-panel {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.messages a {
+  color: green;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+/* Стиль для активной (текущей) страницы */
+.admin-menu li a.active {
+  border-bottom: 2px solid black; /* Белый цвет текста */
+  font-weight: 600;
+}
 
 /*# sourceMappingURL=style.css.map */
