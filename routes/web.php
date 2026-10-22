@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CatalogController;
 
 Route::get('/', [MyController::class, 'home']);
 
@@ -28,3 +29,20 @@ Route::middleware('guest')->group(function () {
 
 // Маршрут для выхода (доступен только вошедшим)
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+//маршрут для админ панели
+Route::get('/admin', [CatalogController::class, 'mainAdminPage'])->name('mainAdminPage');
+
+//добавление товара
+Route::get('/admin/add', [CatalogController::class, 'createForm'])->name('createForm');
+
+//изменение товара
+Route::get('/admin/change/{watch}', [CatalogController::class, 'change'])->name('watches.change');
+
+
+//маршрут для сохранения товара
+Route::post('/admin', [CatalogController::class, 'addWatch'])->name('addWatch');
+
+Route::put('/admin/change/{watch}', [CatalogController::class, 'addWatch'])->name('watches.update');
+
+Route::delete('/admin/destroy/{watch}', [CatalogController::class, 'destroy'])->name('watches.destroy');

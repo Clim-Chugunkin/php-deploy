@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Watch extends Model
 {
-    protected $fillable = ['brand', 'model', 'price', 'specs'];
+    protected $fillable = ['brand', 'model', 'image','price', 'specs'];
     protected $appends = ['image_url'];
     //
 
@@ -27,6 +27,6 @@ class Watch extends Model
         }
 
         // Если картинки в базе нет, отдаем заглушку из папки public/images/
-        return asset('images/no-photo.png');
+        return asset('images/no-photo.jpeg');
     }
 }

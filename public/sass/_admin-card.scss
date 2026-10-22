@@ -1,0 +1,197 @@
+/* ==========================================================================
+   ТАБЛИЦА КАТАЛОГА ТОВАРОВ (АДМИН-ПАНЕЛЬ)
+   ========================================================================== */
+
+/* 1. Главный контейнер таблицы */
+.admin-container {
+    display: grid;
+    /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
+    grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+    width: 100%;
+    max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Заголовки таблицы (Шапка) */
+.table-header {
+    background-color: #f4f4f5;
+    color: #71717a;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 10px;
+    border-bottom: 2px solid #e4e4e7;
+    
+    /* Центрирование текста во всех заголовках */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Опционально: если хотите заголовок "Модель" оставить слева, раскомментируйте строку ниже: */
+/* .table-header:nth-child(2) { justify-content: flex-start; text-align: left; } */
+
+
+/* 3. Карточка (строка) товара */
+.admin-card {
+    grid-column: span 5; /* Растягиваем строку на все 5 колонок основного грида */
+    display: grid;
+    /* Повторяем структуру колонок родителя для идеального выравнивания */
+    grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+    align-items: center; /* Центрирование контента ячеек по вертикали */
+    padding: 12px 10px;
+    border-bottom: 1px solid #e4e4e7;
+    transition: background-color 0.2s ease;
+    text-decoration: none; /* Если карточка обернута в ссылку */
+    color: inherit;
+}
+
+/* Последнюю строку избавляем от нижней рамки */
+.admin-card:last-child {
+    border-bottom: none;
+}
+
+/* Эффект при наведении на строку */
+.admin-card:hover {
+    background-color: #f9fafb;
+    cursor: pointer;
+}
+
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ ЭЛЕМЕНТОВ ВНУТРИ СТРОКИ (ЯЧЕЙКИ)
+   ========================================================================== */
+
+/* Колонка 1: Картинка */
+.admin-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Защита от искажения пропорций фото */
+    border-radius: 6px;
+    border: 1px solid #e4e4e7;
+    justify-self: center; /* Центрируем саму картинку в своей колонке */
+}
+
+/* Колонка 2: Название модели */
+.admin-card h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #18181b;
+    margin: 0;
+    padding: 0 10px;
+    text-align: center; /* Текст названия оставляем слева для удобства чтения */
+    
+    /* Защита от слишком длинных названий (обрезает в красивое троеточие) */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Колонка 3: Цена */
+.admin-price {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center; /* Центрируем цену под заголовком */
+    margin: 0;
+    font-weight: 700;
+    color: #09090b;
+}
+
+.admin-price p {
+    margin: 0;
+}
+
+/* Колонка 4: Остаток на складе */
+.admin-card > p {
+    margin: 0;
+    color: #4b5563;
+    font-weight: 500;
+    text-align: center; /* Центрируем число под заголовком */
+}
+
+/* Колонка 5: Форма и кнопка удаления */
+.admin-card form {
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Центрируем кнопку удаления */
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 1px 2px rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.btn-danger:active {
+    transform: scale(0.97); /* Легкий эффект нажатия */
+}
+
+
+.admin-menu{
+    display: flex;
+   
+    margin-left: auto;
+    list-style: none;
+    gap: 25px;
+}
+
+.admin-menu a{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Размер и начертание текста */
+    font-size: 15px;
+    font-weight: 500;               /* Умеренно жирный (Medium) */
+    line-height: 1.2;               /* Высота строки */
+    letter-spacing: 0.3px;          /* Межсимвольный интервал */
+    
+    /* Декорирование и цвет */
+    color: #4b5563;                 /* Благородный темно-серый цвет */
+    text-decoration: none;          /* Отключение стандартного подчеркивания */
+    
+    /* Сглаживание шрифтов на экранах с высоким разрешением */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    
+}
+
+.admin-panel{
+    display: flex;
+   
+    justify-content: center;
+    padding: 10px;
+}
+.messages a{
+   color: green;
+   font-size: 1.1em;
+   text-decoration: none;
+   
+}
+
+/* Стиль для активной (текущей) страницы */
+.admin-menu li a.active {
+    border-bottom: 2px solid black;                 /* Белый цвет текста */
+    font-weight: 600;
+}
+
+
