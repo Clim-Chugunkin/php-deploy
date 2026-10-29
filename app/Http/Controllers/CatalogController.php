@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Watch;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 
 class CatalogController extends Controller
@@ -89,12 +90,69 @@ class CatalogController extends Controller
         ->route('mainAdminPage');
     }
 
+    public function destroyType(Type $type){
+        //если у товара была картинка, удаляем её с диска
+        
+    if ($type->image && Storage::disk('public')->exists($type->image)) {
+        Storage::disk('public')->delete($type->image);
+    }
+
+
+    // 2. Удаляем сам товар из базы данных
+    $type->delete();
+    return redirect()
+        ->route('getAllTypes');
+    }
+
+
+
     public function change(Watch $watch){
         return view('admin.create', compact('watch'));
+    }
+
+    public function changeType(Type $type){
+        return view('admin.create-type', compact('type'));
     }
 
     public function changePut(Watch $watch){
         return redirect()
             ->route('catalog');
     }
+
+    public function createFormType(){
+        return view('admin.create-type');
+    }
+
+    public function addType(Request $request, ?Type $type = null){
+        $validationRules = ['type'=>'required|string|max:255',
+                            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+                        ];
+
+        $validated = $request->validate($validationRules) ;
+
+        if ($request->hasFile('image')) {
+            //удаляем старую картинку
+            if($type && $type->image && Storage::disk('public')->exists($type->image)){
+                Storage::disk('public')->delete($type->image);
+            }
+            $validated['image'] = $request->file('image')->store('watches', 'public');
+        }
+        // 5. Сохраняем в базу
+        if($type){
+            $type->update($validated);    
+        }else{
+            Type::create($validated);
+        }
+
+        return redirect()
+            ->route('getAllTypes');
+
+    }
+
+    public function getAllTypes(){
+        $types = Type::all();
+        return view('admin.types',compact('types'));
+    }
+
+
 }

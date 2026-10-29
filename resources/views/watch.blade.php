@@ -22,7 +22,8 @@
         <div class="product-info">
             <h1>{{ $watch->brand ?? $watch->name }}</h1>
             <p style="color: #666; font-size: 14px;">ID товара: {{ $watch->id }}</p>
-            
+            <p style="color: #666; font-size: 14px;">Категория товара: {{ $watch->type?->type ?? 'Нет категории'}}</p>
+
             <div class="price">
                 {{ number_format($watch->price, 0, '.', ' ') }} ₽
             </div>

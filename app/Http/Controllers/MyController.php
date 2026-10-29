@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Watch;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Type;
+use App\Models\FeaturedWatch;
 
 
 class MyController extends Controller
@@ -25,7 +27,11 @@ class MyController extends Controller
 
     public function home(){
         $watches = Watch::all();
-        return view('home',compact('watches'));
+        $bannerWatch = $watches->firstWhere('id', 39);
+        $types = Type::all();
+
+        $featuredWatches = FeaturedWatch::all();
+        return view('home',compact('watches','bannerWatch','types','featuredWatches'));
     }
 
     public function getWatchById($id){

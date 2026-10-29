@@ -18,6 +18,21 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+.admin-container-types{
+    display: grid;
+    /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
+    grid-template-columns: 100px 2fr 1fr;
+    width: 70%;
+    max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 /* 2. Заголовки таблицы (Шапка) */
 .table-header {
     background-color: #f4f4f5;
@@ -54,6 +69,19 @@
     color: inherit;
 }
 
+.admin-card-type{
+    grid-column: span 3; /* Растягиваем строку на все 5 колонок основного грида */
+    display: grid;
+    /* Повторяем структуру колонок родителя для идеального выравнивания */
+    grid-template-columns: 100px 2fr 1fr;
+    align-items: center; /* Центрирование контента ячеек по вертикали */
+    padding: 12px 10px;
+    border-bottom: 1px solid #e4e4e7;
+    transition: background-color 0.2s ease;
+    text-decoration: none; /* Если карточка обернута в ссылку */
+    color: inherit;
+}
+
 /* Последнюю строку избавляем от нижней рамки */
 .admin-card:last-child {
     border-bottom: none;
@@ -61,6 +89,11 @@
 
 /* Эффект при наведении на строку */
 .admin-card:hover {
+    background-color: #f9fafb;
+    cursor: pointer;
+}
+
+.admin-card-type:hover {
     background-color: #f9fafb;
     cursor: pointer;
 }
@@ -81,7 +114,7 @@
 }
 
 /* Колонка 2: Название модели */
-.admin-card h1 {
+.admin-card h1, .admin-card-type h1  {
     font-size: 15px;
     font-weight: 600;
     color: #18181b;

@@ -30,10 +30,12 @@
 .nav-bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
 }
 .header-login{
-    margin-left: auto;
+   
+    
 }
 .bag{
     font-family: Arial, Helvetica, sans-serif;
@@ -42,6 +44,7 @@
     align-items: center;
     white-space: nowrap;
     gap: 8px;
+    
 }
 
 .bag > p{
@@ -55,23 +58,20 @@
     color: black;
 }
 
+
+
 .logo > h1{
     font-size: 30px;
     text-transform: uppercase;
     margin: 0;
-   
     padding: 0px;
 }
 .logo > p{
-    font-size: 13px;
-    letter-spacing: 1.0em;
+    font-size: .7em;
     text-transform: uppercase;
-    padding-left: 5px;
-    margin-top: -5px;
-}
-
-header{
-    position : relative;
+    white-space: nowrap;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .menu{

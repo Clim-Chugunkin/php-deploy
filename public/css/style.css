@@ -68,10 +68,7 @@ body {
 .nav-bar {
   display: flex;
   align-items: center;
-}
-
-.header-login {
-  margin-left: auto;
+  justify-content: space-between;
 }
 
 .bag {
@@ -102,15 +99,11 @@ body {
 }
 
 .logo > p {
-  font-size: 13px;
-  letter-spacing: 1em;
+  font-size: 0.7em;
   text-transform: uppercase;
-  padding-left: 5px;
-  margin-top: -5px;
-}
-
-header {
-  position: relative;
+  white-space: nowrap;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .menu {
@@ -214,7 +207,7 @@ header {
 }
 
 .back-caption {
-  font-size: 12vw; /* Размер зависит от ширины экрана (очень большой) */
+  font-size: 10vw; /* Размер зависит от ширины экрана (очень большой) */
   font-weight: 900;
   color: #EBEBEB; /* Делаем текст бледным/полупрозрачным */
   white-space: nowrap; /* Запрещаем перенос строки */
@@ -284,7 +277,7 @@ header {
 }
 
 .item p:first-child {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 20px;
   color: #ABABAB;
 }
@@ -385,8 +378,8 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 100%; /* Ограничиваем максимальную ширину для десктопа */
+  width: 70%;
+  max-width: 70%; /* Ограничиваем максимальную ширину для десктопа */
 }
 
 /* Стилизация текстового поля */
@@ -438,32 +431,104 @@ header {
   opacity: 0.9;
 }
 
+/* Контейнер сетки: уменьшили минимальную ширину колонки с 240px до 180px */
 .cards {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  row-gap: 9px;
-  column-gap: 12px;
-}
-@media (min-width: 800px) {
-  .cards {
-    flex: 4;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+  gap: 15px; /* Уменьшили расстояние между карточками */
+  padding: 15px;
 }
 
+/* Компактная карточка товара */
 .card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 12px; /* Минимальные отступы, чтобы освободить место под фото */
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
-}
-.card h1 {
-  font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  max-width: 250px;
 }
 
 .card:hover {
-  border: 1px solid #3EB489;
-  border-radius: 5px;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Картинка: теперь она занимает 100% ширины узкой карточки */
+.card img {
+  width: 100%;
+  height: 160px; /* Оптимальная высота для небольших карточек */
+  object-fit: contain;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+/* Название модели: уменьшили шрифт для баланса */
+.card h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+  /* Ограничение текста в 2 строки, чтобы сетка не ехала */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Блок с ценой */
+.card .price {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.card .price p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px; /* Чуть компактнее */
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.card .price p:last-child {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+/* Кнопка "В корзину" */
+.card .garbidge {
+  width: 100%;
+  padding: 10px 15px; /* Меньше внутренние отступы кнопки */
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: auto;
+}
+
+.card .garbidge:hover {
+  background-color: #333333;
 }
 
 .card-watch-body {
@@ -915,6 +980,21 @@ button[type=submit]:active {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+.admin-container-types {
+  display: grid;
+  /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
+  grid-template-columns: 100px 2fr 1fr;
+  width: 70%;
+  max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 /* 2. Заголовки таблицы (Шапка) */
 .table-header {
   background-color: #f4f4f5;
@@ -948,6 +1028,19 @@ button[type=submit]:active {
   color: inherit;
 }
 
+.admin-card-type {
+  grid-column: span 3; /* Растягиваем строку на все 5 колонок основного грида */
+  display: grid;
+  /* Повторяем структуру колонок родителя для идеального выравнивания */
+  grid-template-columns: 100px 2fr 1fr;
+  align-items: center; /* Центрирование контента ячеек по вертикали */
+  padding: 12px 10px;
+  border-bottom: 1px solid #e4e4e7;
+  transition: background-color 0.2s ease;
+  text-decoration: none; /* Если карточка обернута в ссылку */
+  color: inherit;
+}
+
 /* Последнюю строку избавляем от нижней рамки */
 .admin-card:last-child {
   border-bottom: none;
@@ -955,6 +1048,11 @@ button[type=submit]:active {
 
 /* Эффект при наведении на строку */
 .admin-card:hover {
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
+.admin-card-type:hover {
   background-color: #f9fafb;
   cursor: pointer;
 }
@@ -973,7 +1071,7 @@ button[type=submit]:active {
 }
 
 /* Колонка 2: Название модели */
-.admin-card h1 {
+.admin-card h1, .admin-card-type h1 {
   font-size: 15px;
   font-weight: 600;
   color: #18181b;
@@ -1075,6 +1173,61 @@ button[type=submit]:active {
 .admin-menu li a.active {
   border-bottom: 2px solid black; /* Белый цвет текста */
   font-weight: 600;
+}
+
+.types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Сама карточка товара */
+.type-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+}
+
+/* Эффект при наведении на карточку */
+.type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #e0e0e0;
+}
+
+/* Изображение товара (часов) */
+.type-img {
+  width: 100%;
+  max-width: 150px; /* Ограничиваем максимальный размер часов */
+  height: 150px;
+  object-fit: contain; /* Картинка не будет сжиматься или искажаться */
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+/* Легкий интерактив для картинки при наведении */
+.type-card:hover .type-img {
+  transform: scale(1.05);
+}
+
+/* Название / тип товара */
+.type-card p {
+  font-family: "Inter", sans-serif; /* Поменяйте на ваш шрифт */
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0;
+  line-height: 1.4;
 }
 
 /*# sourceMappingURL=style.css.map */

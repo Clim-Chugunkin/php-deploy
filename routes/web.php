@@ -46,3 +46,20 @@ Route::post('/admin', [CatalogController::class, 'addWatch'])->name('addWatch');
 Route::put('/admin/change/{watch}', [CatalogController::class, 'addWatch'])->name('watches.update');
 
 Route::delete('/admin/destroy/{watch}', [CatalogController::class, 'destroy'])->name('watches.destroy');
+
+//маршрут список категории
+Route::get('/admin/types',[CatalogController::class, 'getAllTypes'])->name('getAllTypes');
+
+Route::get('/admin/types/change/{type}', [CatalogController::class, 'changeType'])->name('types.change');
+
+Route::delete('/admin/types/destroy/{type}', [CatalogController::class, 'destroyType'])->name('types.destroy');
+
+Route::put('/admin/types/change/{type}', [CatalogController::class, 'addType'])->name('types.update');
+
+
+
+
+//маршрут для добавления категории
+Route::get('/admin/add_type', [CatalogController::class, 'createFormType'])->name('createFormType');
+
+Route::post('/admin/add_type', [CatalogController::class, 'addType'])->name('addType');

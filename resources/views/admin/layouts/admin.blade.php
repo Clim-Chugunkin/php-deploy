@@ -30,6 +30,13 @@
             <li>
                 <a href="{{ route('createForm') }}" class="{{ request()->routeIs('createForm') ? 'active' : '' }}">Добавить товар</a>
             </li>
+            <li>
+                <a href="{{ route('getAllTypes') }}" class="{{ request()->routeIs('getAllTypes') ? 'active' : '' }}">Категории</a>
+            </li>
+            <li>
+                <a href="{{ route('createFormType') }}" class="{{ request()->routeIs('createFormType') ? 'active' : '' }}">Добавить категорию</a>
+            </li>
+
         </ul>
     </nav>
    @yield('content')   

@@ -1,28 +1,99 @@
-.cards{
+/* Контейнер сетки: уменьшили минимальную ширину колонки с 240px до 180px */
+.cards {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-    row-gap: 9px;
-    column-gap: 12px;
-    @media (min-width: $menu-full-screen) {
-        flex: 4;
-    }
+    grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+    gap: 15px; /* Уменьшили расстояние между карточками */
+    padding: 15px;
 }
-.card{
+
+/* Компактная карточка товара */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 12px; /* Минимальные отступы, чтобы освободить место под фото */
     display: flex;
     flex-direction: column;
-    padding: 0 15px;
-    
-
-    h1{
-        font-size: 18px;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    max-width: 250px;
 }
 
-.card:hover{
-    border: 1px solid #3EB489;
-    border-radius: 5px;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* Картинка: теперь она занимает 100% ширины узкой карточки */
+.card img {
+    width: 100%;
+    height: 160px; /* Оптимальная высота для небольших карточек */
+    object-fit: contain; 
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
 
+.card:hover img {
+    transform: scale(1.03);
+}
+
+/* Название модели: уменьшили шрифт для баланса */
+.card h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+    /* Ограничение текста в 2 строки, чтобы сетка не ехала */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Блок с ценой */
+.card .price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 12px;
+}
+
+.card .price p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* Чуть компактнее */
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.card .price p:last-child {
+    font-size: 13px;
+    color: #7a7a7a;
+}
+
+/* Кнопка "В корзину" */
+.card .garbidge {
+    width: 100%;
+    padding: 10px 15px; /* Меньше внутренние отступы кнопки */
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: auto; 
+}
+
+.card .garbidge:hover {
+    background-color: #333333;
+}
