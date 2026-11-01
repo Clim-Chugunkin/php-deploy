@@ -12,7 +12,7 @@
     <div class="catalog-container">
 
     <form action="{{ isset($watch) ? route('watches.update', $watch->id) : route('addWatch') }}" method="POST" enctype="multipart/form-data">
-    
+    @csrf
     
     @if(isset($watch))
         @method('PUT')
