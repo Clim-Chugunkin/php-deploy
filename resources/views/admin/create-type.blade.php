@@ -12,7 +12,7 @@
 <div class="catalog-container">
 
     <form action="{{ isset($type) ? route('types.update', $type->id) : route('addType') }}" method="POST" enctype="multipart/form-data">
-    
+    @csrf
     
     @if(isset($type))
         @method('PUT')
