@@ -35,11 +35,13 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 
+Route::get('/admin', [CatalogController::class, 'mainAdminPage'])->name('mainAdminPage');
+
 //маршруты только для админа
 Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
         //маршрут для админ панели
-    Route::get('/', [CatalogController::class, 'mainAdminPage'])->name('mainAdminPage');
+    
 
     //добавление товара
     Route::get('/add', [CatalogController::class, 'createForm'])->name('createForm');
