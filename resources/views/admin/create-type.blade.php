@@ -38,7 +38,7 @@
             <img id="image-preview" src="{{$type?->image_url ?? old('image')}}" alt="Превью" style="max-width: 150px; max-height: 150px;display: block; border: 1px solid #ddd; padding: 5px; border-radius: 4px;">
         </div>
     </div> 
-        <button type="submit">Отправить</button>
+        <button type="submit" class="form-send-btn">Отправить</button>
     </form>
 
 </div>

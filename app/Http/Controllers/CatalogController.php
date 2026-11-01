@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class CatalogController extends Controller
 {
     public function createForm(){
-        return view('admin.create');
+        $types = Type::all();
+        return view('admin.create',compact('types'));
     }
 
     public function mainAdminPage(){
@@ -25,6 +26,7 @@ class CatalogController extends Controller
         $validationRules = ['model'=>'required|string|max:255',
                             'price'=>'required|numeric|min:0',
                             'brand'=>'required|string|max:100',
+                            'type_id'=>'nullable|exists:types,id',
                             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
                             'specs' => 'nullable|array'
                         ];
@@ -107,7 +109,8 @@ class CatalogController extends Controller
 
 
     public function change(Watch $watch){
-        return view('admin.create', compact('watch'));
+        $types = Type::all();
+        return view('admin.create', compact('watch','types'));
     }
 
     public function changeType(Type $type){

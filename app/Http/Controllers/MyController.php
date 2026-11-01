@@ -87,10 +87,7 @@ class MyController extends Controller
                 ]);
             }
         }
-        ////What for ?????
-        if (!$productId){
-            $productId = 4;
-        } 
+         
         
         CartItem::create([
             'cart_id'=>$cart->id,

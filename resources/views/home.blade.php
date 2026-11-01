@@ -36,7 +36,7 @@
                     @auth
                     <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn-logout">Выйти</button>
+                            <button type="submit" class="btn-logout">Выход</button>
                         </form>
                     @endauth
 
@@ -101,7 +101,7 @@
             @foreach($featuredWatches as $watch)
                     <div class="card" data-id="{{$watch->watch->id}}" data-url="/watches/{{$watch->watch->id}}">
                         <img src="{{$watch->watch->image_url}}">
-                        <h1>{{$watch->model}}</h1>
+                        <h1>{{$watch->watch->model}}</h1>
                         <div class="price">
                             <p>{{$watch->watch->price}}</p>
                             <p>Р</p>
@@ -146,7 +146,8 @@
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Accept': 'application/json',
-            }
+            },
+            credentials: 'include'
         })
         .then(response => response.json())
         .then(data => {
@@ -170,8 +171,8 @@
                     method: 'POST',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json', // Ошибка 1: пропущена запятая
-                        'Content-Type': 'application/json', // Важно: сообщаем, что отправляем JSON
+                        'Accept': 'application/json', 
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ 
                         product_id: productId

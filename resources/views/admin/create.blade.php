@@ -31,6 +31,17 @@
     </div>
 
     <div class="form-group">
+        <label>Категория</label>
+        <select id="type" name="type_id">
+        <option value="">-- Не выбрано --</option>
+        @foreach($types as $type)
+            <option value="{{$type->id}}" @selected(isset($watch) && $watch->type_id == $type->id)>{{$type->type}}</option>
+        @endforeach
+    
+        </select>
+    </div>
+
+    <div class="form-group">
         <label>Цена (₽)</label>
         <input type="number" name="price" step="0.01" min="0" required placeholder="Введите цену часов" value="{{$watch?->price ?? old('price')}}">
     </div>
@@ -76,7 +87,7 @@
 
         <button type="button" id="btn-add">+</button>
     </div>
-        <button type="submit">Отправить</button>
+        <button type="submit" class="form-send-btn">Отправить</button>
     </form>
 
     </div>

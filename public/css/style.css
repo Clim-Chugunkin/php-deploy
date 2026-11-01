@@ -177,12 +177,19 @@ body {
   }
 }
 .btn-logout {
-  background: none;
-  font-size: 1.1em;
-  background-color: #aaaaaa;
-  border-radius: 6px;
-  padding: 5px 10px;
+  padding: 5px;
+  background-color: transparent;
+  color: black;
   border: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  opacity: 0.7;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.btn-logout:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .img-watch {
@@ -378,7 +385,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 50%;
   max-width: 70%; /* Ограничиваем максимальную ширину для десктопа */
 }
 
@@ -791,7 +798,8 @@ h1 {
    3. СТИЛИЗАЦИЯ ИНПУТОВ (ТЕКСТ, ЧИСЛА)
    ========================================================================== */
 input[type=text],
-input[type=number] {
+input[type=number],
+select {
   width: 100%;
   padding: 11px 14px;
   font-size: 15px;
@@ -805,7 +813,8 @@ input[type=number] {
 
 /* Эффект фокуса для текстовых полей */
 input[type=text]:focus,
-input[type=number]:focus {
+input[type=number]:focus,
+select:focus {
   border-color: #1a202c;
   box-shadow: 0 0 0 3px rgba(26, 32, 44, 0.1);
 }
@@ -940,7 +949,7 @@ input[type=number]:focus {
 /* ==========================================================================
    6. ГЛАВНАЯ КНОПКА ОТПРАВКИ ФОРМЫ
    ========================================================================== */
-button[type=submit] {
+.form-send-btn {
   width: 100%;
   padding: 14px;
   background-color: #1a202c; /* Элегантный глубокий графитовый цвет */
@@ -953,11 +962,11 @@ button[type=submit] {
   transition: background-color 0.2s ease-in-out;
 }
 
-button[type=submit]:hover {
+.form-send-btn:hover {
   background-color: #2d3748;
 }
 
-button[type=submit]:active {
+.form-send-btn:active {
   background-color: #11151c;
 }
 
