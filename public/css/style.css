@@ -300,15 +300,8 @@ body {
   column-gap: 20px;
 }
 
-.garbidge {
-  align-self: flex-start;
-  background-color: white;
-  padding: 18px 56px;
-  border: 2px solid black;
-  border-radius: 9px;
-  color: black;
-  font-size: 20px;
-  font-weight: 500;
+.info .garbidge {
+  margin-top: 10px;
 }
 
 .price {
@@ -519,7 +512,7 @@ body {
 }
 
 /* Кнопка "В корзину" */
-.card .garbidge {
+.garbidge {
   width: 100%;
   padding: 10px 15px; /* Меньше внутренние отступы кнопки */
   background-color: #1a1a1a;
@@ -977,7 +970,7 @@ select:focus {
 .admin-container {
   display: grid;
   /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
-  grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+  grid-template-columns: 100px 2fr 1fr 1fr 1fr 1fr;
   width: 100%;
   max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
   margin: 20px auto;
@@ -1025,10 +1018,10 @@ select:focus {
 /* .table-header:nth-child(2) { justify-content: flex-start; text-align: left; } */
 /* 3. Карточка (строка) товара */
 .admin-card {
-  grid-column: span 5; /* Растягиваем строку на все 5 колонок основного грида */
+  grid-column: span 6; /* Растягиваем строку на все 5 колонок основного грида */
   display: grid;
   /* Повторяем структуру колонок родителя для идеального выравнивания */
-  grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+  grid-template-columns: 100px 2fr 1fr 1fr 1fr 1fr;
   align-items: center; /* Центрирование контента ячеек по вертикали */
   padding: 12px 10px;
   border-bottom: 1px solid #e4e4e7;

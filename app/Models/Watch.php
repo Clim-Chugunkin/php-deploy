@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use App\Models\Type;
+use App\Models\FeaturedWatch;
 
 class Watch extends Model
 {
@@ -35,5 +36,9 @@ class Watch extends Model
 
     public function type(): BelongsTo{
         return $this->belongsTo(Type::class, 'type_id');
+    }
+
+    public function featured(){
+        return $this->hasOne(FeaturedWatch::class, 'watch_id');
     }
 }

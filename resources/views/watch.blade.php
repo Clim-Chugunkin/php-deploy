@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>{{ $watch->name }} — Интернет-магазин</title>
-</head>
-<body class="card-watch-body">
-
-    <a  href="/" id="back-link" class="back-link">← Вернуться в каталог</a>
+@extends('app')
+@section('content')
+<div class="card-watch-body">
 
     <div class="card-watch-container">
-        <!-- Ссылка возврата в каталог -->
         
         <!-- Блок с картинкой -->
         <div class="product-image">
@@ -29,7 +20,7 @@
             </div>
 
             <!-- Кнопка добавления в корзину -->
-            <button class="btn-buy" data-id="{{ $watch->id }}">Добавить в корзину</button>
+            <button class="garbidge" data-id="{{ $watch->id }}">Добавить в корзину</button>
         </div>
 
         <!-- Блок характеристик из JSON-поля specs -->
@@ -54,6 +45,26 @@
             @endif
         </div>
     </div>
-
-    </body>
-</html>
+    <script>
+        
+    
+        document.querySelectorAll('.garbidge').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const productId = card.dataset.id;
+                // Передаем для записи в корзину
+                fetch("{{ route('api.cart.add') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json', 
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        product_id: productId
+                    }),
+                    credentials: 'include' 
+                })
+            });
+        });
+    </script>
+@endsection('content')

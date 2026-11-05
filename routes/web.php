@@ -7,6 +7,8 @@ use App\Http\Controllers\CatalogController;
 
 Route::get('/', [MyController::class, 'home']);
 
+Route::get('/watches/sorted/types/{type:slug}', [MyController::class, 'getWatchesByType']);
+
 
 
 Route::get('/users', [MyController::class, 'getAllUsers']);
@@ -74,5 +76,9 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::get('/add_type', [CatalogController::class, 'createFormType'])->name('createFormType');
 
     Route::post('/add_type', [CatalogController::class, 'addType'])->name('addType');
+
+    //маршрут для добавления в избранное
+    Route::post('/add/popular', [CatalogController::class, 'toggleFeatured'])->name('addToPop');
+
 });
 

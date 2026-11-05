@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Watch;
 use App\Models\Type;
+use App\Models\FeaturedWatch;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CatalogController extends Controller
 {
@@ -140,6 +142,8 @@ class CatalogController extends Controller
             }
             $validated['image'] = $request->file('image')->store('watches', 'public');
         }
+        $validated['slug'] = Str::slug($validated['type'], '-', 'ru');
+
         // 5. Сохраняем в базу
         if($type){
             $type->update($validated);    
@@ -155,6 +159,24 @@ class CatalogController extends Controller
     public function getAllTypes(){
         $types = Type::all();
         return view('admin.types',compact('types'));
+    }
+
+    public function toggleFeatured(Request $request)
+    {
+        $watchId = $request->input('watch_id');
+        
+        // 1. Ищем, есть ли уже эти часы в популярных
+        $featured = FeaturedWatch::where('watch_id', $watchId)->first();
+
+        if ($featured) {
+            // Если есть — удаляем из популярных
+            $featured->delete();
+            return response()->json(['status' => 'removed', 'message' => 'Удалено из популярных']);
+        } else {
+            // Если нет — добавляем
+            FeaturedWatch::create(['watch_id' => $watchId]);
+            return response()->json(['status' => 'added', 'message' => 'Добавлено в популярные']);
+        }
     }
 
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Type extends Model
 {
     //
-    protected $fillable = ['type', 'image'];
+    protected $fillable = ['type', 'image','slug'];
     protected $appends = ['image_url'];
 
     public function getImageUrlAttribute()

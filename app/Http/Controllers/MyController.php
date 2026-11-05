@@ -27,10 +27,19 @@ class MyController extends Controller
 
     public function home(){
         $watches = Watch::all();
-        $bannerWatch = $watches->firstWhere('id', 39);
+        $bannerWatch = null;
         $types = Type::all();
 
-        $featuredWatches = FeaturedWatch::all();
+        $featuredWatches = FeaturedWatch::with('watch')->get();
+
+        if ($featuredWatches->isNotEmpty()){
+            $randomKey = $featuredWatches->keys()->random();
+            $bannerWatch = $featuredWatches->pull($randomKey)->watch;
+
+        }else{
+            $bannerWatch = $watches->first();
+        }
+
         return view('home',compact('watches','bannerWatch','types','featuredWatches'));
     }
 
@@ -125,5 +134,12 @@ class MyController extends Controller
 
        // 4. Перенаправляем пользователя обратно на страницу корзины
        return redirect()->back()->with('success', 'Товар успешно удален'); 
+    }
+
+    public function getWatchesByType(Type $type){
+        
+        $watches = Watch::where('type_id',$type->id)->get();
+        
+        return view('watch-types',compact('watches'));
     }
 }

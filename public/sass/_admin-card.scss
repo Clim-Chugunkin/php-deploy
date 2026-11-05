@@ -6,7 +6,7 @@
 .admin-container {
     display: grid;
     /* Настройка 5 колонок: Фото (100px), Модель (2fr — широкая), Цена, Склад, Кнопка (по 1fr) */
-    grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+    grid-template-columns: 100px 2fr 1fr 1fr 1fr 1fr;
     width: 100%;
     max-width: 1200px; /* Ограничиваем максимальную ширину для красоты */
     margin: 20px auto;
@@ -57,10 +57,10 @@
 
 /* 3. Карточка (строка) товара */
 .admin-card {
-    grid-column: span 5; /* Растягиваем строку на все 5 колонок основного грида */
+    grid-column: span 6; /* Растягиваем строку на все 5 колонок основного грида */
     display: grid;
     /* Повторяем структуру колонок родителя для идеального выравнивания */
-    grid-template-columns: 100px 2fr 1fr 1fr 1fr;
+    grid-template-columns: 100px 2fr 1fr 1fr 1fr 1fr;
     align-items: center; /* Центрирование контента ячеек по вертикали */
     padding: 12px 10px;
     border-bottom: 1px solid #e4e4e7;
