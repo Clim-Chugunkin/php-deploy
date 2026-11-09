@@ -1139,9 +1139,13 @@ select:focus {
 
 .admin-menu {
   display: flex;
-  margin-left: auto;
   list-style: none;
   gap: 25px;
+  width: 100%;
+}
+
+.admin-menu li:nth-child(2) {
+  margin-left: auto;
 }
 
 .admin-menu a {

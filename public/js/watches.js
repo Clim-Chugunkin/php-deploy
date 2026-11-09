@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(newRow);
         rowIndex++;
     });
-
-    
 });
 
 // Находим элементы на странице
