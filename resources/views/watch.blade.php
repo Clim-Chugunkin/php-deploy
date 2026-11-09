@@ -45,26 +45,4 @@
             @endif
         </div>
     </div>
-    <script>
-        
-    
-        document.querySelectorAll('.garbidge').forEach(card => {
-            card.addEventListener('click', (e) => {
-                const productId = card.dataset.id;
-                // Передаем для записи в корзину
-                fetch("{{ route('api.cart.add') }}", {
-                    method: 'POST',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json', 
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ 
-                        product_id: productId
-                    }),
-                    credentials: 'include' 
-                })
-            });
-        });
-    </script>
 @endsection('content')

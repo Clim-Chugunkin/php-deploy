@@ -5,7 +5,7 @@ use App\Http\Controllers\MyController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
 
-Route::get('/', [MyController::class, 'home']);
+Route::get('/', [MyController::class, 'home'])->name('home');
 
 Route::get('/watches/sorted/types/{type:slug}', [MyController::class, 'getWatchesByType']);
 

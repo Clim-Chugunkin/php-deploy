@@ -50,26 +50,16 @@
                 </button>
         </header>
         @yield('content')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                console.log('page showed');
-                fetch("{{route('api.cart.count')}}", {
-                method: 'GET',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Accept': 'application/json',
-                },
-                credentials: 'include'
-            })
-            .then(response => response.json())
-            .then(data => {
-                const counter = document.getElementById('cart-counter');
-                if (counter) {
-                    counter.textContent = data.positions;
-                }
-            })
-            .catch(error => console.error('Ошибка загрузки корзины:', error));
-            });    
-        </script>
+       
 <body>
+<script>
+    // Создаем глобальный объект для конфигураций сайта
+    window.AppConfig = {
+        routes: {
+            cartAdd: "{{ route('api.cart.add') }}",
+            cartCount: "{{ route('api.cart.count') }}"
+        }
+    };
+</script>
+<script src="{{ asset('js/cart.js') }}"></script>   
 </html>        

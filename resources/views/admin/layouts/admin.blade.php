@@ -22,6 +22,9 @@
         
         <ul class="admin-menu">
             <li>
+            <a href="{{ route('home') }}">Сайт</a>        
+            </li>
+            <li>
                 <a href="{{ route('mainAdminPage') }}" class="{{ request()->routeIs('mainAdminPage') ? 'active' : '' }}">Главная</a>
             </li>
             <li>
@@ -40,5 +43,5 @@
         </ul>
     </nav>
    @yield('content')   
-</body>
+</body> 
 </html>

@@ -33,37 +33,13 @@
     </div>   
     @endforeach
     </div>
-<script>
-    document.querySelectorAll('.admin-card').forEach(card =>{
-        card.addEventListener('click', (e) => {
-            if (!(e.target.classList.contains('btn')) && 
-                    (!(e.target.classList.contains('toggle-featured')))) {
-                window.location.href = card.dataset.url;    
-            }
-            
-        });  
-    });
-    document.querySelectorAll('.toggle-featured').forEach(btn=>{
-        btn.addEventListener('click', (e)=> {
-            event.preventDefault();
-            const watchId = btn.dataset.id;
-            fetch("{{route('addToPop')}}", {
-                method: 'POST',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                        watch_id: watchId
-                    }),
-                credentials: 'include' 
-            })
-            .then(response => response.json())
-            .then(data => {
-                btn.checked = (data.status === 'added');
-            })
-        })
-    });
-</script>
+    <script>
+    // Создаем глобальный объект для конфигураций сайта
+    window.AppConfig = {
+        routes: {
+            addToPop: "{{route('addToPop')}}",
+        }
+    };
+    </script>
+    <script src="{{ asset('js/admin.js') }}"></script>
 @endsection('content')
