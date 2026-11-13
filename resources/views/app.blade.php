@@ -33,7 +33,14 @@
                         <a href="{{route('curt')}}"><img src="{{ asset('images/bag.jpeg') }}" width="24px"></a>
                         <p id="cart-counter">0</p>
                     </div>
+
+                   
+
                     @auth
+                    <div class="bag">
+                        <a href="{{route('user.orders')}}">Заказы</a>
+                    </div>
+                    
                     <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn-logout">Выход</button>
