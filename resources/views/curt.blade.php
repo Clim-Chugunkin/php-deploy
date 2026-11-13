@@ -36,7 +36,7 @@
 
                 <div class="curt-nuber-total flex-row">
                     <p>Всего товаров </p>
-                    <p id="amount">2</p>
+                    <p id="amount">{{$cart->items->count()}}</p>
                 </div>
 
                 <div class="curt-price-total flex-row">
@@ -44,9 +44,7 @@
                     <p id="price">{{ number_format($cart->getTotalPrice(), 0, '.', ' ') }} ₽</p>
                 </div>
                  
-                <button class="btn-pay">
-                    Перейти к оформлению 
-                </button>
+                <a href="{{route('order.checkout')}}" class="btn-pay">Перейти к оформлению</a>
             </div>   
     @endif
 </div>    

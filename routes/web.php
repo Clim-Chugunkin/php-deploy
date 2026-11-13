@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [MyController::class, 'home'])->name('home');
 
@@ -13,7 +14,7 @@ Route::get('/watches/sorted/types/{type:slug}', [MyController::class, 'getWatche
 
 Route::get('/users', [MyController::class, 'getAllUsers']);
 
-Route::get('/watches/{id}', [MyController::class, 'getWatchById']);
+Route::get('/watches/{id}', [MyController::class, 'getWatchById'])->name('watch.details');
 
 Route::get('/curt', [MyController::class, 'getCurt'])->name('curt');
 
@@ -21,6 +22,14 @@ Route::delete('/curt/remove/{id}', [MyController::class, 'curtRemove'])->name('c
 
 Route::get('cart/count', [MyController::class, 'getCartItems'])->name('api.cart.count');
 Route::post('cart/add', [MyController::class, 'addToCurt'])->name('api.cart.add');
+
+//маршрут для ввода данных заказа
+Route::get('orders/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
+//маршрут для оформления заказа
+Route::post('orders/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
+
+Route::get('orders/', [OrderController::class, 'userOrders'])->name('user.orders');
+Route::get('orders/{order}',[OrderController::class, 'getDetailedOrder'])->name('order.detailed');
 
 
 
@@ -79,6 +88,11 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
 
     //маршрут для добавления в избранное
     Route::post('/add/popular', [CatalogController::class, 'toggleFeatured'])->name('addToPop');
+
+    Route::get('/orders',[OrderController::class, 'getAllOrders'])->name('admin.orders');
+    
+    Route::get('/orders/{order}',[OrderController::class, 'getOrderDetailed'])->name('admin.order.detailed');
+
 
 });
 

@@ -1236,4 +1236,64 @@ select:focus {
   line-height: 1.4;
 }
 
+/* 1. Общие стили для любой таблицы (работают для cols-2, cols-3, cols-5 и др.) */
+[class^=my-grid-cols-] {
+  margin: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+[class^=my-grid-cols-] > :is(.my-grid-head, .my-grid-row) {
+  display: grid;
+  height: 50px;
+  align-items: center;
+  padding: 12px;
+}
+
+[class^=my-grid-cols-] > .my-grid-head {
+  background-color: darkgray;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px 12px 0 0;
+}
+
+[class^=my-grid-cols-] > .my-grid-row {
+  border-bottom: 1px solid #eee;
+}
+
+[class^=my-grid-cols-] > .my-grid-row:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+/* 2. Модификаторы количества колонок */
+.my-grid-cols-2 > :is(.my-grid-head, .my-grid-row) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.my-grid-cols-3 > :is(.my-grid-head, .my-grid-row) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.my-grid-cols-5 > :is(.my-grid-head, .my-grid-row) {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* 3. Картинки и выравнивание */
+.my-grid-row img {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.end {
+  justify-self: end;
+}
+
+.center {
+  justify-self: center;
+}
+
 /*# sourceMappingURL=style.css.map */
