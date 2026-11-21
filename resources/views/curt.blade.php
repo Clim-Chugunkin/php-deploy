@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>TIMELESS</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-<body class="curt-body">
-    <div class="curt-header">
-            <!-- Ссылка возврата в каталог -->
-            <a  href="/" id="back-link" class="back-link">← Вернуться в каталог</a>
-            <h1>Корзина</h1>
-    </div>
+@extends('app')
+@section('title', 'Корзина')
+
+@section('content')
+<h1 class="title-caption">Корзина</h1>
     @if(!$cart || $cart->items->isEmpty())
-        <h1>The curt is empty</h1>
+        <h1 class="title-caption">The curt is empty</h1>
     @else
         <div class="curt-container">
             <div class="curt-items-container">
@@ -45,8 +37,7 @@
                 </div>
                  
                 <a href="{{route('order.checkout')}}" class="btn-pay">Перейти к оформлению</a>
-            </div>   
+            </div> 
+        </div>  
     @endif
-</div>    
-</body>
-</html>
+@endsection('content')

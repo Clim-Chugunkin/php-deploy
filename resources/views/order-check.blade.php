@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>TIMELESS</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-<body>
-    <form action="{{route('order.confirm')}}" method="POST">
+@extends('app')
+@section('title', 'Оформление заказа')
+@section('content')
+<h1 class="title-caption">Оформление заказа</h1>
+    
+    <form class="form-checkout" action="{{route('order.confirm')}}" method="POST">
     @csrf
-    <h1>Оформление заказа</h1>
+    
     <div class="order-contacts">
     
     <div class="form-group">
@@ -56,29 +53,33 @@
             </div>
         </label>
     </div>
+    <button type="submit" class="form-send-btn">Отправить</button>
+    </div>
+</form>
+<h2 class="title-caption">Товары</h2> 
+<div class="my-grid-cols-3">
+    <div class="my-grid-head">
+        <div class="center">Картинка</div>
+        <div>Модель</div>
+        <div class="end">Цена</div>
+    </div>
+    @foreach($cart->items as $item)
+        <div class="my-grid-row">
+            <img src="{{$item->watch->image_url}}" class="center">
+            <p>{{$item->watch->model}}</p>
+            <p class="end">{{ number_format($item->watch->price, 0, '.', ' ') }} ₽</p>   
+        </div>    
+    @endforeach
+</div>
+<div class="curt-total">
+    <div class="curt-nuber-total flex-row">
+        <p>Всего товаров </p>
+        <p id="amount">{{$cart->items->count()}}</p>
     </div>
 
-    <div class="curt-items-container">
-        @foreach($cart->items as $item)
-            <div class="curt-card">
-                <img src="{{$item->watch->image_url}}" class="curt-img">
-                <p>{{$item->watch->model}}</p>
-                <p class="item-price">{{ number_format($item->watch->price, 0, '.', ' ') }} ₽</p>   
-            </div>    
-        @endforeach
+    <div class="curt-price-total flex-row">
+        <h2 class="curt-total-price ">К оплате </h2>
+        <p id="price" class="bold">{{ number_format($cart->getTotalPrice(), 0, '.', ' ') }} ₽</p>
     </div>
-    <div class="curt-total">
-        <div class="curt-nuber-total flex-row">
-            <p>Всего товаров </p>
-            <p id="amount">{{$cart->items->count()}}</p>
-        </div>
-
-        <div class="curt-price-total flex-row">
-            <h2 class="curt-total-price">К оплате </h2>
-            <p id="price">{{ number_format($cart->getTotalPrice(), 0, '.', ' ') }} ₽</p>
-        </div>
-        <button type="submit" class="form-send-btn">Отправить</button>
-    </div>
-</form> 
-</body>
-</html>
+</div>
+@endsection('content')

@@ -2,28 +2,33 @@
 @section('title', 'Заказы')
 
 @section('content')
-<h1>Заказы</h1>
-<div class="admin-container">
+<div class="main">
+<h1 class="title-caption">Заказы</h1>
+<div class="my-grid-cols-6-orders">
         <!-- Заголовок -->
-    <div class="table-header">Имя</div>
-    <div class="table-header">телефон</div>
-    <div class="table-header">почта</div>
-    <div class="table-header">Адресс</div>
-    <div class="table-header">Комментарий</div>
-    <div class="table-header">Сумма заказа</div>
+    <div class="my-grid-head">
+        <div>Номер</div>
+        <div>Дата заказа</div>
+        <div>Имя</div>
+        <div>телефон</div>
+        <div>Адресс</div>
+        <div class="end">Сумма</div>
+    </div>
     @foreach($orders as $order)
-    <div class="admin-card" data-url="{{route('admin.order.detailed', $order->id)}}">
-        <h1>{{$order->name}}</h1>
-        <h1>{{$order->phone}}</h1>
-        <h1>{{$order->email}}</h1>
-        <h1>{{$order->address}}</h1>
-        <h1>{{$order->comment}}</h1>
-        <h1>{{$order->total}}</h1>
+    <div class="my-grid-row" data-url="{{route('admin.order.detailed', $order->id)}}">
+        <div> {{$order->id}}</div>
+        <div>{{$order->created_at->format('d.m.Y')}}</div>    
+        <div>{{$order->name}}</div>
+        <div>{{$order->phone}}</div>
+        <div>{{$order->address}}</div>
+       
+        <div class="end">{{$order->total}}</div>
     </div>  
     @endforeach
 </div>    
+</div>
     <script>
-        document.querySelectorAll('.admin-card').forEach(card =>{
+        document.querySelectorAll('.my-grid-row').forEach(card =>{
         card.addEventListener('click', (e) => {
             if (!(e.target.classList.contains('btn')) && 
                     (!(e.target.classList.contains('toggle-featured')))) {

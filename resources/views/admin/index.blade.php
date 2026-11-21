@@ -2,37 +2,44 @@
 @section('title', 'Catalog')
 
 @section('content')
-    <h1>Каталог Админа</h1>
-    <div class="admin-container">
+<div class="main">
+    <h1 class="title-caption">Каталог Админа</h1>
+    <div class="my-grid-cols-6">
         <!-- Заголовок -->
-    <div class="table-header">Картинка</div>
-    <div class="table-header">Модель</div>
-    <div class="table-header">Цена</div>
-    <div class="table-header">Остаток на складе</div>
-    <div class="table-header">Избранное</div>
-    <div class="table-header"></div>
-    
-    @foreach($watches as $watch)
-     <div class="admin-card" data-id="{{$watch->id}}" data-url="{{ route('watches.change', $watch->id) }}">
-        <img src="{{$watch->image_url}}" class="admin-img">
-        <h1>{{$watch->model}}</h1>
-        <div class="admin-price">
-            <p>{{$watch->price}}</p>
-            <p>Р</p>
+        <div class="my-grid-head">    
+            <div class="table-header center">Картинка</div>
+            <div class="table-header ">Модель</div>
+            <div class="table-header center">Остаток на складе</div>
+            <div class="table-header center">Избранное</div>
+            <div class="table-header end">Цена</div>
+            <div class="table-header"></div>
         </div>
-        <p>{{$watch->stock}}</p>
-        <input type="checkbox" class="toggle-featured" data-id="{{$watch->id}}" {{$watch->featured ? 'checked' : ''}}>
-        <form action="{{ route('watches.destroy', $watch->id) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот товар?');">
-            @csrf
-            @method('DELETE')
+    
+        @foreach($watches as $watch)
+        <div class="my-grid-row" data-id="{{$watch->id}}" data-url="{{ route('watches.change', $watch->id) }}">
+            <img src="{{$watch->image_url}}" class="center" >
+            <div class=" ">{{$watch->model}}</div>
+           
+            <div class="center">{{$watch->stock}}</div>
+            <div class="center"><input type="checkbox" class=" " data-id="{{$watch->id}}" {{$watch->featured ? 'checked' : ''}}></div>
+            <div class="admin-price end">
+                <p>{{$watch->price}}</p>
+                <p>Р</p>
+            </div>
+            <form class="end" action="{{ route('watches.destroy', $watch->id) }}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот товар?');">
+                @csrf
+                @method('DELETE')
+                
+                <button type="submit" class="btn btn-danger" >
+                    <img class="img" src="{{asset('images/cart.jpeg')}}">
+                     
+                </button>
+            </form>
             
-            <button type="submit" class="btn btn-danger" >
-                Удалить товар
-            </button>
-        </form>
-    </div>   
-    @endforeach
+        </div>   
+        @endforeach
     </div>
+</div>
     <script>
     // Создаем глобальный объект для конфигураций сайта
     window.AppConfig = {

@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TIMELESS</title>
+        <title>@yield('title')</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 <body>
 <div class="main">
         <header class="nav-bar">     
-                <div class="logo">
-                    <h1>toki.ru</h1>
+                <div class="logo clickable" data-url="{{route('home')}}">
+                    <h1>{{config('app.name')}}</h1>
                     <p>твой стиль.твое время</p>
                 </div>
                 <div class="find">
                     <input type="text" placeholder="Найти марку часов..." class="search-input">
                     <img src="{{ asset('images/find.jpeg') }}" width="36px" class="catalog-nav__find">
                 </div>
+
                 <div class="header-login">
-                    @guest
-                    <a href="{{route('login')}}" class="login">
-                    <div class="login bag">
-                        <img src="{{ asset('images/login.png') }}" width="24px">
-                        <p>Вход</p> 
-                    </div>
-                    </a>
-                    @endguest
-                    @auth
-                        <p class="user-name">Привет,{{ auth()->user()->name }}!</p>
-                       
-                    @endauth  
-                    <div class="bag">
-                        <a href="{{route('curt')}}"><img src="{{ asset('images/bag.jpeg') }}" width="24px"></a>
-                        <p id="cart-counter">0</p>
+                    <div class="icon-card {{ request()->routeIs('user.orders') ? 'active' : '' }}"  data-url="{{ route('user.orders')}}">
+                        <img src="{{asset('images/orders.jpeg')}}">
+                        <p>Заказы</p>                
                     </div>
 
-                   
-
-                    @auth
-                    <div class="bag">
-                        <a href="{{route('user.orders')}}">Заказы</a>
+                    <div class="icon-card {{ request()->routeIs('curt') ? 'active' : '' }}" data-url="{{ route('curt') }}">
+                        <img src="{{asset('images/cart.jpeg')}}">
+                        <p>Корзина</p>
+                        <p id="cart-counter" class="cart-counter"></p>                
                     </div>
-                    
-                    <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn-logout">Выход</button>
-                        </form>
-                    @endauth
+
+                    <div class="icon-card {{ request()->routeIs('user') ? 'active' : '' }}" data-url="{{route('user')}}">
+                        <img src="{{asset('images/prof.jpeg')}}">
+                        <p>Профиль</p>                
+                    </div>
 
                 </div>
 
@@ -55,8 +42,11 @@
                     <span></span>
                     <span></span>
                 </button>
-        </header>
-        @yield('content')
+        </header> 
+        @yield('content') 
+</div>
+
+
        
 <body>
 <script>
@@ -67,6 +57,15 @@
             cartCount: "{{ route('api.cart.count') }}"
         }
     };
+    document.querySelectorAll('.icon-card, .clickable').forEach(card =>{
+        card.addEventListener('click', (e) => {
+            if (!(e.target.classList.contains('btn')) && 
+                    (!(e.target.classList.contains('toggle-featured')))) {
+                window.location.href = card.dataset.url;    
+            }
+            
+        });  
+    });   
 </script>
 <script src="{{ asset('js/cart.js') }}"></script>   
 </html>        

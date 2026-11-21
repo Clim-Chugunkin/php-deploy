@@ -212,23 +212,4 @@
     
 }
 
-.admin-panel{
-    display: flex;
-   
-    justify-content: center;
-    padding: 10px;
-}
-.messages a{
-   color: green;
-   font-size: 1.1em;
-   text-decoration: none;
-   
-}
-
-/* Стиль для активной (текущей) страницы */
-.admin-menu li a.active {
-    border-bottom: 2px solid black;                 /* Белый цвет текста */
-    font-weight: 600;
-}
-
 

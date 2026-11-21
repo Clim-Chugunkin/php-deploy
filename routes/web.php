@@ -13,6 +13,9 @@ Route::get('/watches/sorted/types/{type:slug}', [MyController::class, 'getWatche
 
 
 Route::get('/users', [MyController::class, 'getAllUsers']);
+//профиль
+Route::get('/user', [MyController::class, 'getUser'])->middleware('auth')->name('user');
+
 
 Route::get('/watches/{id}', [MyController::class, 'getWatchById'])->name('watch.details');
 

@@ -1,30 +1,3 @@
-h1 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #1a202c;
-    margin-bottom: 25px;
-    text-align: center;
-    letter-spacing: -0.5px;
-}
-
-/* ==========================================================================
-   2. КОНТЕЙНЕР ФОРМЫ
-   ========================================================================== */
-.catalog-container {
-    background: #ffffff;
-    width: 100%;
-    max-width: 550px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    border: 1px solid #e2e8f0;
-
-    /* ⬇️ МАГИЯ ЦЕНТРОВКИ БЕЗ BODY ⬇️ */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 /* Группы полей формы */
 .form-group {
     margin-bottom: 20px;
@@ -214,4 +187,27 @@ select:focus {
 
 .form-send-btn:active {
     background-color: #11151c;
+}
+
+/* ==========================================================================
+   2. КОНТЕЙНЕР ФОРМЫ
+   ========================================================================== */
+   .catalog-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+
+    /* ⬇️ МАГИЯ ЦЕНТРОВКИ БЕЗ BODY ⬇️ */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-checkout{
+    max-width: 800px;
+    align-self: center;
 }

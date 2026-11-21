@@ -44,7 +44,6 @@
 
 /* Название модели: уменьшили шрифт для баланса */
 .card h1 {
-    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: #2d2d2d;
@@ -66,7 +65,6 @@
 }
 
 .card .price p {
-    font-family: 'Inter', sans-serif;
     font-size: 16px; /* Чуть компактнее */
     font-weight: 700;
     color: #1a1a1a;
@@ -78,21 +76,6 @@
     color: #7a7a7a;
 }
 
-/* Кнопка "В корзину" */
-.garbidge {
-    width: 100%;
-    padding: 10px 15px; /* Меньше внутренние отступы кнопки */
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: auto; 
-}
 
 .card .garbidge:hover {
     background-color: #333333;

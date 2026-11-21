@@ -1,7 +1,8 @@
-document.querySelectorAll('.admin-card').forEach(card =>{
+document.querySelectorAll('.my-grid-row').forEach(card =>{
     card.addEventListener('click', (e) => {
         if (!(e.target.classList.contains('btn')) && 
-                (!(e.target.classList.contains('toggle-featured')))) {
+                (!(e.target.classList.contains('toggle-featured')))&&
+                    (!(e.target.classList.contains('img')))) {
             window.location.href = card.dataset.url;    
         }
         

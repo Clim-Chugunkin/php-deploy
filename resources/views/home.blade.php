@@ -36,6 +36,7 @@
             </div>
             </div>
         </div>
+        <h1 class="back-caption">Категории</h1>
         <div class="types">
             @foreach($types as $type)
                 <div class="type-card" data-url="/watches/sorted/types/{{$type->slug}}">
@@ -46,7 +47,7 @@
     
         </div>
         
-        <h1 class="catalog">Популярные</h1>
+        <h1 class="back-caption">Популярные</h1>
         <div class="catalog-content">
         <div class="cards">
             @foreach($featuredWatches as $watch)

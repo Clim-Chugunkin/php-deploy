@@ -4,9 +4,9 @@
 @section('content')
    
     @if(empty($watch))
-        <h1>Добавление товара</h1>
+        <h1 class="title-caption">Добавление товара</h1>
     @else
-        <h1>Изменение товара</h1>
+        <h1 class="title-caption">Изменение товара</h1>
     @endif    
 
     <div class="catalog-container">

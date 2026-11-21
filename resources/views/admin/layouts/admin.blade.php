@@ -24,11 +24,12 @@
             <li>
             <a href="{{ route('home') }}">Сайт</a>        
             </li>
-            <li>
-                <a href="{{ route('mainAdminPage') }}" class="{{ request()->routeIs('mainAdminPage') ? 'active' : '' }}">Главная</a>
-            </li>
+            
             <li>
                 <a href="{{ route('admin.orders') }}" class="{{ request()->routeIs('admin.orders') ? 'active' : '' }}">Заказы</a> 
+            </li>
+            <li>
+                <a href="{{ route('mainAdminPage') }}" class="{{ request()->routeIs('mainAdminPage') ? 'active' : '' }}">Товары</a>
             </li>
             <li>
                 <a href="{{ route('createForm') }}" class="{{ request()->routeIs('createForm') ? 'active' : '' }}">Добавить товар</a>

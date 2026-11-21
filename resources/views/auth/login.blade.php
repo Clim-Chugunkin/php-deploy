@@ -15,7 +15,7 @@
         input:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16,185,129,0.1); }
         .checkbox-group { display: flex; align-items: center; gap: 8px; margin: 15px 0; }
         .checkbox-group label { margin-bottom: 0; cursor: pointer; }
-        .btn { width: 100%; padding: 11px; background-color: #10b981; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .btn { width: 100%; padding: 11px; background-color: #1a1a1a; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
         .btn:hover { background-color: #059669; }
         .alert { background-color: #fee2e2; border-left: 4px solid #ef4444; color: #991b1b; padding: 12px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; }
         .footer-text { text-align: center; margin-top: 15px; font-size: 14px; color: #6b7280; }

@@ -142,4 +142,9 @@ class MyController extends Controller
         
         return view('watch-types',compact('watches'));
     }
+
+    public function getUser(){
+            $user = auth()->user();
+            return view('user',compact('user'));
+    }
 }

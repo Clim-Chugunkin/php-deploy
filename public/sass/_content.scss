@@ -1,12 +1,12 @@
-.img-watch{
-    width: 90vw;
-    margin-top: -3vh;
-    @media (min-width: $desctop-screen){
-      width: 30%;
-      margin-top: 0;
-      object-fit: contain;
-      flex: 2;
-    }
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 16px 0;
+  @media(min-width: $desctop-screen){
+    max-width: 1200px;
+    margin: 0 auto;
+  } 
 }
 
 .container{
@@ -16,41 +16,122 @@
     flex-direction: column;
     margin-top: 10px;
 }
+
 .back-caption {
-    font-size: 10vw;         /* Размер зависит от ширины экрана (очень большой) */
-    font-weight: 900;
-    color: #EBEBEB; /* Делаем текст бледным/полупрозрачным */
-    white-space: nowrap;     /* Запрещаем перенос строки */
-    pointer-events: none;    /* Чтобы текст не мешал кликать по картинке */
-    text-transform: uppercase;
-    padding: 0;
-    margin: 0;
-    line-height: 0.8em;
-  }
+  font-size: 5vw;         /* Размер зависит от ширины экрана (очень большой) */
+  font-weight: 900;
+  color: #EBEBEB; /* Делаем текст бледным/полупрозрачным */
+  white-space: nowrap;     /* Запрещаем перенос строки */
+  pointer-events: none;    /* Чтобы текст не мешал кликать по картинке */
+  text-transform: uppercase;
+  padding: 0;
+  margin-bottom: 10px;
+  line-height: 0.8em;
+  text-align: center;
+}
 
-  .cover{
+.cover{
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $desctop-screen) {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.img-watch{
+  width: 90vw;
+  @media (min-width: $desctop-screen){
+    width: 30%;
+    margin-top: 0;
+    object-fit: contain;
+    flex: 2;
+  }
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+}
+
+.info > span{
+  display: block;
+  width : 28px;
+  height: 5px;
+  background-color: black;
+  border-radius: 1px;
+}
+
+.info > h1{
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2em;
+}
+
+.price{
+  display: flex;
+  gap: 10px;
+  font-size: 48px;
+}
+
+.price p:last-child{
+  color: #DCD8D8;
+}
+
+.feature{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));;
+  row-gap: 20px;
+  column-gap: 20px;
+  
+}
+
+.item p:first-child{
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #ABABAB;
+}
+
+.item p + p{
+  font-weight: 600;
+}
+
+.advants{
+  display: flex;
+  justify-content: space-between;
+}
+
+.advant{
+  text-align: center;
+}
+
+.advant > h1{
+  color: #EBEBEB;
+  font-size: 70px;
+  font-weight: 900;
+}
+
+.advant > p{
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4em;
+
+}
+
+.catalog{
+  font-size: 84px;
+  font-weight: 900;
+  color: #EBEBEB;
+  text-transform: uppercase;
+}
+
+.catalog-content{
+  @media(min-width: $menu-full-screen){
     display: flex;
-    flex-direction: column;
-    @media (min-width: $desctop-screen) {
-      flex-direction: row;
-      width: 100%;
-    }
   }
+}
 
-  .main{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 16px 0;
-    @media(min-width: $desctop-screen){
-      max-width: 1200px;
-      margin: 0 auto;
-    } 
-  }
-
-  .catalog-content{
-    @media(min-width: $menu-full-screen){
-      display: flex;
-    }
-  }
 

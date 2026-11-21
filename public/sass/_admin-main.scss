@@ -1,0 +1,64 @@
+.admin-panel{
+    display: flex;
+   
+    justify-content: center;
+    padding: 10px;
+}
+.messages a{
+   color: green;
+   font-size: 1.1em;
+   text-decoration: none;
+   
+}
+
+/* Стиль для активной (текущей) страницы */
+.admin-menu li a.active {
+    border-bottom: 2px solid black;                 /* Белый цвет текста */
+    font-weight: 600;
+}
+
+.admin-menu{
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    width: 100%;
+}
+
+.admin-menu li:nth-child(2) {
+    margin-left: auto;
+    
+}
+
+.admin-menu a{
+    /* Размер и начертание текста */
+    font-size: 15px;
+    font-weight: 500;               /* Умеренно жирный (Medium) */
+    line-height: 1.2;               /* Высота строки */
+    letter-spacing: 0.3px;          /* Межсимвольный интервал */
+    
+    /* Декорирование и цвет */
+    color: #4b5563;                 /* Благородный темно-серый цвет */
+    text-decoration: none;          /* Отключение стандартного подчеркивания */ 
+}
+
+.admin-price {
+    display: flex;
+    gap: 4px;
+    font-weight: 700;
+    color: #09090b;
+}
+.title-caption{
+    text-align: center;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.btn{
+    border: none;
+    width: 32px;
+}
+
+.btn > img{
+    display: block;
+    width: 100%;
+}

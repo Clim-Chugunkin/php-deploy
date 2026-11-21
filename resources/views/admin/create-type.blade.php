@@ -4,9 +4,9 @@
 @section('content')
 
 @if(empty($type))
-        <h1>Добавление категории</h1>
+        <h1 class="title-caption">Добавление категории</h1>
     @else
-        <h1>Изменение категории</h1>
+        <h1 class="title-caption">Изменение категории</h1>
     @endif    
 
 <div class="catalog-container">

@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>TIMELESS</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-<body>    
-<h1>Заказ {{$order->email}}</h1>
-<div class="admin-container">
-    <div class="table-header">Имя</div>
-    <div class="table-header">телефон</div>
-    <div class="table-header">почта</div>
-    <div class="table-header">Адресс</div>
-    <div class="table-header">Комментарий</div>
-    <div class="table-header">Сумма заказа</div>
-    <div class="admin-card">
-        <h1>{{$order->name}}</h1>
-        <h1>{{$order->phone}}</h1>
-        <h1>{{$order->email}}</h1>
-        <h1>{{$order->address}}</h1>
-        <h1>{{$order->comment}}</h1>
-        <h1>{{$order->total}}</h1>
+@extends('app')
+@section('title', 'Заказы')
+
+@section('content')
+<div class="main">    
+<h1 class="title-caption">Заказ №{{$order->id}}</h1>
+<div class="my-grid-cols-6-user-orders">
+    <div class="my-grid-head">
+        <div>Имя</div>
+        <div>телефон</div>
+        <div>почта</div>
+        <div>Адресс</div>
+        <div>Комментарий</div>
+        <div>Итог</div>
     </div>
-
-   
-
-    
+    <div class="my-grid-row">
+        <div>{{$order->name}}</div>
+        <div>{{$order->phone}}</div>
+        <div>{{$order->email}}</div>
+        <div>{{$order->address}}</div>
+        <div>{{$order->comment}}</div>
+        <div>{{$order->total}}</div>
+    </div>
 </div>
-<h1>Товары</h1>
+<h1 class="title-caption">Товары</h1>
     <div class="my-grid-cols-3">
         <div class="my-grid-head">
                 <div>иконка</div>
@@ -43,8 +38,7 @@
         @endforeach
 
     </div>
-
-</body>
+</div>    
 <script>
             document.querySelectorAll('.my-grid-row').forEach(card=>{
               card.addEventListener('click',(e)=>{
@@ -54,4 +48,4 @@
               });
             });
 </script>
-</html>
+@endsection('content')

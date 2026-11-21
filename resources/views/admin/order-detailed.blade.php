@@ -2,29 +2,39 @@
 @section('title', 'Заказы')
 
 @section('content')
-<h1>Заказ {{$order->email}}</h1>
-<div class="admin-container">
-    <div class="table-header">Имя</div>
-    <div class="table-header">телефон</div>
-    <div class="table-header">почта</div>
-    <div class="table-header">Адресс</div>
-    <div class="table-header">Комментарий</div>
-    <div class="table-header">Сумма заказа</div>
-    <div class="admin-card" data-url="{{route('admin.order.detailed', $order->id)}}">
-        <h1>{{$order->name}}</h1>
-        <h1>{{$order->phone}}</h1>
-        <h1>{{$order->email}}</h1>
-        <h1>{{$order->address}}</h1>
-        <h1>{{$order->comment}}</h1>
-        <h1>{{$order->total}}</h1>
-    </div>
-</div>
+<div class="main">
+<h1 class="title-caption">Заказ № {{$order->id}}</h1>
 
-@foreach($order->items as $item)
-    <div class="admin-card">
-        <h1>{{$item->watch->model}}</h1>
-        <h1>{{$item->price}}</h1>    
+<h2 class="title-caption">Товары</h2> 
+    <div class="my-grid-cols-3">
+        <div class="my-grid-head">
+                <div class="center">иконка</div>
+                <div>Модель</div>
+                <div class="end">Сумма</div>
+        </div>
+        @foreach($order->items as $item)
+            <div class="my-grid-row" data-url="{{route('watch.details',$item->watch->id)}}">
+                <img src="{{$item->watch->image_url}}" class="center">
+                <div>{{$item->watch->model}}</div>
+                <div class="end">{{$item->price}}</div>
+            </div>
+        @endforeach
     </div>
-@endforeach
+    <div class="my-grid-cols-3">
+        <div class="my-grid-row">
+            <div class="end bold">Итог:</div>
+            <div></div>
+            <div class="end bold">{{$order->total}}</div>
+        </div>
+    </div>
+    <div class="my-grid-cols-3">
+        <div class="my-grid-row">
+            <div class="end bold">Коментарии:</div>
+            <div></div>
+            <div class="end">{{$order->comment}}</div>
+        </div>
+    </div>
 
+</div>   
+    
 @endsection('content')

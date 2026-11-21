@@ -1,13 +1,11 @@
 /* 1. Общие стили для любой таблицы (работают для cols-2, cols-3, cols-5 и др.) */
 [class^="my-grid-cols-"] {
-    margin: 0 10px;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 [class^="my-grid-cols-"] > :is(.my-grid-head, .my-grid-row) {
     display: grid;
-    height: 50px;
+    
     align-items: center;
     padding: 12px;
     
@@ -18,10 +16,13 @@
     color: white;
     font-weight: bold;
     border-radius: 12px 12px 0 0;
+    text-transform: uppercase;
+    height: 50px;
 }
 
 [class^="my-grid-cols-"] > .my-grid-row {
     border-bottom: 1px solid #eee;
+    height: 80px;
 }
 
 [class^="my-grid-cols-"] > .my-grid-row:hover {
@@ -30,17 +31,34 @@
 }
 
 /* 2. Модификаторы количества колонок */
+.my-grid-cols-2-prof > :is(.my-grid-head, .my-grid-row) {
+    grid-template-columns: 1fr 2fr;
+}
+
 .my-grid-cols-2 > :is(.my-grid-head, .my-grid-row) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 }
 
 .my-grid-cols-3 > :is(.my-grid-head, .my-grid-row) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 0.5fr 2fr 2fr;
 }
 
 .my-grid-cols-5 > :is(.my-grid-head, .my-grid-row) {
     grid-template-columns: repeat(5, 1fr);
 }
+
+.my-grid-cols-6 > :is(.my-grid-head, .my-grid-row) {
+    grid-template-columns: repeat(5,1fr) 0.5fr; 
+}
+
+.my-grid-cols-6-orders > :is(.my-grid-head, .my-grid-row) {
+    grid-template-columns: 0.5fr repeat(4,1fr) 0.5fr; 
+}
+
+.my-grid-cols-6-user-orders > :is(.my-grid-head, .my-grid-row) {
+    grid-template-columns: 1fr 1fr 2fr 2fr 2fr 1fr; 
+}
+
 
 /* 3. Картинки и выравнивание */
 .my-grid-row img {
@@ -57,4 +75,7 @@
 
 .center {
     justify-self: center;
+}
+.bold{
+    font-weight: bold;
 }
